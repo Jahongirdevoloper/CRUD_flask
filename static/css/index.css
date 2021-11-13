@@ -1,0 +1,18 @@
+#btn{
+    float: right;
+}
+
+#wrapper{
+    margin-top: 60px;
+}
+
+#wrap{
+    width: 500px;
+    margin: auto;
+    border: 1px darkgray solid;
+    border-radius: 20px;
+}
+
+#wrap:hover{
+    box-shadow: 0px 4px 30px 4px  rgba(3, 151, 209, 0.26);
+}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% include 'header.html' %}
+
+{% block title %}Flask CRUD Application{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col md-12">
+                <div class="jumbotron mt-5 p-3 bg-info">
+                    <h2>Manage <b>Employees</b> <a href="{{ url_for('add') }}" id="btn" type="submit" class="btn btn-success"
+                        data-toggle="modal" data-target="#mymodal">Add New Employees</a></h2>
+
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                {{message}}
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+
+                    <table class="table table-hover table-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Action</th>
+                        </tr>
+                        {% for row in employees %}
+                        <tr>
+                            <td>{{row[0]}}</td>
+                            <td>{{row[1]}}</td>
+                            <td>{{row[2]}}</td>
+                            <td>{{row[3]}}</td>
+                            <td>
+                                <a href="/edit/{{row[0]}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#mymodal">Edit</a>
+                                <a href="/delete/{{row[0]}}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure To Delete ?')">Delete</a>
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
